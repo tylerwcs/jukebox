@@ -32,7 +32,7 @@ body {
 .jukebox {
     background-color: var(--radio-body);
     border-radius: 40px;
-    padding: 20px;
+    padding: 15px;
     box-shadow: 10px 10px 0px rgba(0,0,0,0.2);
     border: 8px solid #fff;
     position: relative;
@@ -41,24 +41,24 @@ body {
 .jukebox-header {
     color: #fff;
     font-family: 'Bangers', cursive;
-    font-size: 4em;
+    font-size: 3em;
     text-transform: uppercase;
     text-shadow: 4px 4px 0px var(--accent-red);
-    margin: 10px 0 20px;
+    margin: 5px 0 15px;
     transform: rotate(-2deg);
 }
 
 .screen-area {
     background-color: var(--radio-front);
     border-radius: 20px;
-    padding: 30px;
+    padding: 20px;
     border: 5px solid #fff;
     box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
 }
 
 /* Speaker Grill Effect */
 .grill {
-    height: 20px;
+    height: 15px;
     background-image: repeating-linear-gradient(
         90deg,
         transparent,
@@ -66,28 +66,28 @@ body {
         var(--radio-body) 5px,
         var(--radio-body) 10px
     );
-    margin: 20px 0;
+    margin: 10px 0;
     border-radius: 5px;
     opacity: 0.5;
 }
 
 /* Form Styles */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: left;
 }
 
 label {
     display: block;
-    font-size: 1.2em;
-    margin-bottom: 5px;
+    font-size: 1em;
+    margin-bottom: 3px;
     color: var(--radio-body);
 }
 
 input[type="text"] {
     width: 100%;
-    padding: 15px;
-    font-size: 1.2em;
+    padding: 10px;
+    font-size: 1em;
     border: 3px solid var(--radio-body);
     border-radius: 10px;
     background: #fff;
@@ -104,8 +104,8 @@ button {
     background-color: var(--accent-red);
     color: #fff;
     border: none;
-    padding: 15px 40px;
-    font-size: 1.5em;
+    padding: 10px 30px;
+    font-size: 1.2em;
     font-family: 'Bangers', cursive;
     border-radius: 50px;
     cursor: pointer;
