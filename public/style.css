@@ -1,0 +1,192 @@
+:root {
+    --bg-color: #f0e6d2;
+    --radio-body: #2b5b84;
+    --radio-front: #e8ddc5;
+    --accent-red: #d63031;
+    --accent-orange: #e67e22;
+    --text-dark: #2d3436;
+    --grill-color: #dcdde1;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: radial-gradient(#dcdde1 1px, transparent 1px);
+    background-size: 20px 20px;
+    font-family: 'Righteous', cursive;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-dark);
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Jukebox / Radio Container */
+.jukebox {
+    background-color: var(--radio-body);
+    border-radius: 40px;
+    padding: 20px;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.2);
+    border: 8px solid #fff;
+    position: relative;
+}
+
+.jukebox-header {
+    color: #fff;
+    font-family: 'Bangers', cursive;
+    font-size: 4em;
+    text-transform: uppercase;
+    text-shadow: 4px 4px 0px var(--accent-red);
+    margin: 10px 0 20px;
+    transform: rotate(-2deg);
+}
+
+.screen-area {
+    background-color: var(--radio-front);
+    border-radius: 20px;
+    padding: 30px;
+    border: 5px solid #fff;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* Speaker Grill Effect */
+.grill {
+    height: 20px;
+    background-image: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 5px,
+        var(--radio-body) 5px,
+        var(--radio-body) 10px
+    );
+    margin: 20px 0;
+    border-radius: 5px;
+    opacity: 0.5;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: var(--radio-body);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    border: 3px solid var(--radio-body);
+    border-radius: 10px;
+    background: #fff;
+    font-family: 'Righteous', cursive;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-red);
+}
+
+button {
+    background-color: var(--accent-red);
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.5em;
+    font-family: 'Bangers', cursive;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    box-shadow: 0 5px 0 #c0392b;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+button:active {
+    transform: translateY(5px);
+    box-shadow: none;
+}
+
+/* Song List (Admin & User View) */
+.song-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.song-item {
+    background: #fff;
+    border: 2px solid var(--radio-body);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+}
+
+.song-info {
+    text-align: left;
+}
+
+.song-title {
+    font-size: 1.3em;
+    color: var(--accent-red);
+}
+
+.song-requester {
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+.delete-btn {
+    background: var(--text-dark);
+    padding: 5px 15px;
+    font-size: 1em;
+    box-shadow: 0 3px 0 #000;
+}
+
+/* Knobs Decoration */
+.knobs {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+}
+
+.knob {
+    width: 40px;
+    height: 40px;
+    background: #dcdde1;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.knob::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    width: 4px;
+    height: 15px;
+    background: var(--text-dark);
+    transform: translateX(-50%);
+}
+

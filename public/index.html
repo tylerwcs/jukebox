@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Jukebox - Request A Song</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="jukebox">
+            <div class="jukebox-header">Abbott Jukebox</div>
+            
+            <div class="screen-area">
+                <div class="grill"></div>
+                
+                <h2 style="color: var(--radio-body);">Pick Your Tune</h2>
+                
+                <div class="form-group">
+                    <label for="song">Song Title</label>
+                    <input type="text" id="song" placeholder="e.g. My Love - Westlife">
+                </div>
+                
+                <div class="form-group">
+                    <label for="username">Your Name</label>
+                    <input type="text" id="username" placeholder="Alex">
+                </div>
+
+                <button id="submitBtn">QUEUE IT!</button>
+
+                <div class="grill"></div>
+            </div>
+
+            <div class="knobs">
+                <div class="knob"></div>
+                <div class="knob"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        const socket = io();
+        const submitBtn = document.getElementById('submitBtn');
+        const usernameInput = document.getElementById('username');
+        const songInput = document.getElementById('song');
+
+        submitBtn.addEventListener('click', () => {
+            const name = usernameInput.value.trim();
+            const song = songInput.value.trim();
+
+            if (name && song) {
+                socket.emit('newRequest', { name, song });
+                
+                // Clear inputs and give feedback
+                songInput.value = '';
+                
+                Toastify({
+                    text: "Song Queued! Rock on!",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "center",
+                    style: {
+                        background: "#27ae60",
+                        fontFamily: "'Bangers', cursive",
+                        fontSize: "1.5em",
+                        border: "2px solid #fff",
+                        borderRadius: "10px",
+                        boxShadow: "3px 3px 0 rgba(0,0,0,0.2)"
+                    }
+                }).showToast();
+
+            } else {
+                Toastify({
+                    text: "Please fill in both fields!",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "center",
+                    style: {
+                        background: "#2d3436",
+                        fontFamily: "'Bangers', cursive",
+                        fontSize: "1.5em",
+                        border: "2px solid #fff",
+                        borderRadius: "10px"
+                    }
+                }).showToast();
+            }
+        });
+    </script>
+</body>
+</html>
+

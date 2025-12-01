@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Booth - Queue</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="jukebox">
+            <div class="jukebox-header">DJ Booth</div>
+            
+            <div class="screen-area">
+                <div class="grill"></div>
+                
+                <h2 style="color: var(--radio-body);">Up Next</h2>
+                
+                <ul id="queueList" class="song-list">
+                    <!-- Songs will appear here -->
+                </ul>
+
+                <div class="grill"></div>
+            </div>
+
+            <div class="knobs">
+                <div class="knob"></div>
+                <div class="knob"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const queueList = document.getElementById('queueList');
+
+        socket.on('updateQueue', (queue) => {
+            queueList.innerHTML = ''; // Clear current list
+            
+            queue.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'song-item';
+                
+                li.innerHTML = `
+                    <div class="song-info">
+                        <div class="song-title">${item.song}</div>
+                        <div class="song-requester">Requested by: ${item.name}</div>
+                    </div>
+                    <button class="delete-btn" onclick="removeSong('${item.id}')">DONE</button>
+                `;
+                
+                queueList.appendChild(li);
+            });
+
+            if (queue.length === 0) {
+                queueList.innerHTML = '<p style="color: #999;">No songs in queue. Time for a break!</p>';
+            }
+        });
+
+        function removeSong(id) {
+            socket.emit('removeRequest', id);
+        }
+    </script>
+</body>
+</html>
+
